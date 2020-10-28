@@ -4,22 +4,34 @@ colors {
   color: #32b38c;
   color: #abffe6;
 }
-body {
+body,
+h1,
+h2 {
   margin: 0;
 }
 .header {
   background-color: #ff8d6e;
+  height: 100px;
 }
 .main {
   display: flex;
   flex-direction: column;
   background-color: #32b38c;
 }
+.cart {
+  border: 1px solid black;
+}
 .footer {
   background-color: #8f2407;
 }
 .store {
   background-color: #abffe6;
+}
+.item {
+  background-color: azure;
+  border: 1px solid black;
+  height: 200px;
+  width: 200px;
 }
 @media only screen and (min-width: 768px) {
   .main {
