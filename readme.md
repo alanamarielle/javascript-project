@@ -21,3 +21,7 @@ Pickup or Delivery
 -card verification
 
 \*Receipt
+
+\DELIVERY ADDRESS, CREDIT CARD INFO
+, AND CASH PAYMENT: HIDDEN UNTIL WE CLICK
+"CHECKOUTBUTTON"
