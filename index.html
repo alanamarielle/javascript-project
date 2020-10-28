@@ -4,16 +4,45 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Javascript Project</title>
+    <link rel="stylesheet" href="style.css">
   </head>
   <body>
-    <header>
-      <h1></h1>
+    <header class="header" >
+      <h1>Not Your Mama's Cocktail Cart</h1>
     </header>
     <main class="main">
-      <div class="cart"></div>
+      <div class="cart">
+          <section class="checkout-container">
+              <!-- <div class="receipts"></div> ----dynamically added from js-->
+              <form class="form address">
+<h2>Delivery Address</h2>
+<label for="address">Street Address</label>
+<input type="text" id="address" name="address" placeholder="111 First Street">
+<label for="city">City</label>
+<input type="text" id="city" name="city" placeholder="City">
+<label for="state">State</label>
+<select name="state" id="state">State</select>
+<label for="zip">ZIP</label>
+<input type="text" name="zip" id="zip" placeholder="10101">
+<button>Get Your Booze!</button>
+              </form>
+
+              <form class="credit-card form">
+                <h2>Credit Card Information</h2>
+                  <label for="name">Name On Credit Card</label>
+                  <input type="text" id="name" name="name" placeholder="Jane James">
+                  <label for="number">Credit Card Number</label>
+                  <input type="text" id="number" name="number" placeholder="0000 1111 2222 3333">
+                  <label for="cvv">CVV</label>
+                  <input type="text" id="cvv" name="cvv">                
+<button>Submit</button>
+              </form>
+          </section>
+      </div>
       <div class="store"></div>
       <div class="recipes"></div>
     </main>
     <footer></footer>
+    <script src="script.js"></script>
   </body>
 </html>

@@ -1,13 +1,37 @@
+colors {
+  color: #ff8d6e;
+  color: #8f2407;
+  color: #32b38c;
+  color: #abffe6;
+}
 body {
   margin: 0;
 }
+.header {
+  background-color: #ff8d6e;
+}
 .main {
   display: flex;
+  flex-direction: column;
+  background-color: #32b38c;
 }
-
-@media only screen and (min-width: 768px) .cart {
+.footer {
+  background-color: #8f2407;
 }
 .store {
+  background-color: #abffe6;
 }
-.recipes {
+@media only screen and (min-width: 768px) {
+  .main {
+    flex-direction: row;
+  }
+  .cart {
+    flex: 1;
+  }
+  .store {
+    flex: 2;
+  }
+  .recipes {
+    flex: 1;
+  }
 }
