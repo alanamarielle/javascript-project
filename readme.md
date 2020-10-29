@@ -25,3 +25,7 @@ Pickup or Delivery
 \DELIVERY ADDRESS, CREDIT CARD INFO
 , AND CASH PAYMENT: HIDDEN UNTIL WE CLICK
 "CHECKOUTBUTTON"
+
+*Cart Array
+Put our store item into the cart. 
+Grabbing objects from one array and pushing them into another. 

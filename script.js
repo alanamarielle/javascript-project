@@ -80,35 +80,72 @@ let display = () => {
     let price = document.createElement("p");
     price.innerText = item.price;
     itemInfo.appendChild(name, price);
-    let addToCart = document.createElement("button");
-    addToCart.classList.add("add");
-    addToCart.innerText = "Add";
-    addToCart.setAttribute("data-index", index);
-    card.append(type, name, price, addToCart);
+    let addToCartButton = document.createElement("button");
+    addToCartButton.classList.add("add");
+    addToCartButton.innerText = "Add";
+    addToCartButton.setAttribute("data-index", index);
+    card.append(type, name, price, addToCartButton);
     inventoryContainer.append(card);
   });
 };
 display();
 
 let receiptContainer = document.querySelector(".receipt-container");
-let addToCart = document.querySelector(".add");
-let item = document.querySelector(".item");
-
-addToCart.addEventListener("click", (e) => {
-  e.preventDefault();
+let store = document.querySelector(".store");
+// console.log(addToCartButton);
+let cartArray = [];
+store.addEventListener("click", (e) => {
   if (e.target.classList.contains("add")) {
-    let name = document.createElement("p");
-    inventory.name.innerText = name;
-    let price = document.createElement("p");
-    price.innerText = price;
-    let index = e.target.getAttribute("data-price");
-    price.setAttribute("data-price", index);
-
-    let deleteFromCart = document.createElement("button");
-    deleteFromCart.classList.add("delete");
-    deleteFromCart.innerText = "Remove From Cart";
-    deleteFromCart.setAttribute(index, "price");
-    receiptContainer.append(name, inventory.price, deleteFromCart);
-    console.log(addToCart);
+    let index = e.target.getAttribute("data-index");
+    cartArray.push(inventory[index]);
+    console.log(cartArray);
   }
 });
+
+// let name = document.createElement("p");
+// name.innerText = item.name;
+// let price = document.createElement("p");
+// price.innerText = item.price;
+// let addToCartButton = document.querySelector("add");
+// addToCartButton.addEventListener("click", () => {
+//   let name = inventory.name;
+//   let price = inventory.price;
+//   let newObject = {
+//     name: name,
+//     price: price,
+//   };
+// });
+// console.log(addToCartButton);
+
+// let addToCart = document.querySelector(".add");
+// let item = document.querySelector(".item");
+
+// addToCart.addEventListener("click", (e) => {
+//   e.preventDefault();
+//   if (e.target.classList.contains("add")) {
+//     // let name = document.createElement("p");
+//     // inventory.name.innerText = name;
+//     // let price = document.createElement("p");
+//     // price.innerText = price;
+//     let index = e.target.getAttribute("data-index");
+//     // price.setAttribute("data-price", index);
+
+//     let name = inventory.name;
+//     let price = inventory.price;
+
+//     let newObject = {
+//       name: name,
+//       price: price,
+//     };
+
+//     // let deleteFromCart = document.createElement("button");
+//     // deleteFromCart.classList.add("delete");
+//     // deleteFromCart.innerText = "Remove From Cart";
+//     // deleteFromCart.setAttribute(index, "price");
+//     receiptContainer.append(newObject, index);
+//     console.log(addToCart);
+//     console.log(newObject);
+//   }
+//   cartArray.push(newObject);
+//   display();
+// });
