@@ -13,7 +13,14 @@ h2 {
   background-color: #ff8d6e;
   height: 100px;
 }
+.header-h1 {
+  text-align: center;
+}
+.hidden {
+  display: none;
+}
 .main {
+  height: max-content;
   display: flex;
   flex-direction: column;
   background-color: #32b38c;
@@ -21,26 +28,55 @@ h2 {
 .cart {
   border: 1px solid black;
 }
-.footer {
-  background-color: #8f2407;
-}
 .store {
-  background-color: #abffe6;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: lightgray;
 }
 .item {
+  display: flex;
+  flex-direction: column;
   background-color: azure;
   border: 1px solid black;
+  margin: 20px;
   height: 200px;
   width: 200px;
 }
+.wine {
+  height: 20px;
+  width: 100%;
+  background-color: #8f2407;
+}
+.beer {
+  height: 20px;
+  width: 100%;
+  background-color: #e6b839;
+}
+.liquor {
+  height: 20px;
+  width: 100%;
+  background-color: #d6e591;
+}
+.footer {
+  flex: 1;
+  height: 400px;
+  color: white;
+  background-color: black;
+}
 @media only screen and (min-width: 768px) {
   .main {
+    flex: none;
+  }
+  .desktop-flex {
+    display: flex;
     flex-direction: row;
   }
   .cart {
     flex: 1;
   }
   .store {
+    align-items: center;
     flex: 2;
   }
   .recipes {
