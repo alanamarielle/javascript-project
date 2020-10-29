@@ -28,6 +28,12 @@ h2 {
 .cart {
   border: 1px solid black;
 }
+.receipt-container {
+  border: 1px solid black;
+  background-color: #8f2407;
+  height: 600px;
+  width: 600px;
+}
 .store {
   height: 100%;
   display: flex;
@@ -42,6 +48,16 @@ h2 {
   margin: 20px;
   height: 200px;
   width: 200px;
+}
+.info {
+  height: 100px;
+  width: 100px;
+}
+.add {
+  background-color: yellow;
+  color: black;
+  width: 45px;
+  height: 45px;
 }
 .wine {
   height: 20px;
