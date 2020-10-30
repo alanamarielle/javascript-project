@@ -2,67 +2,68 @@
 
 let inventory = [
   {
-    name: "Red Wine",
+    name: "Mommy's Time Out",
     type: "wine",
     price: 15.99,
     quantity: 0,
   },
   {
-    name: "White Wine",
+    name: "Girl's Night",
     type: "wine",
     price: 15.99,
     quantity: 45,
   },
   {
-    name: "Rosé Wine",
+    name: "Oh Hush, You're Making Me Blush",
     type: "wine",
     price: 20.99,
     quantity: 45,
   },
   {
-    name: "Ale",
+    name: "Ale Mary",
     type: "beer",
     price: 8.99,
     quantity: 32,
   },
   {
-    name: "Lager",
+    name: "Lager Than Life!",
     type: "beer",
     price: 8.99,
     quantity: 14,
   },
   {
-    name: "Sour",
+    name: "Pucker Up, Butter Cup",
     type: "beer",
     price: 12.99,
     quantity: 15,
   },
   {
-    name: "Tequila",
+    name: "You're Tequila Me, Dude!",
     type: "liquor",
     price: 22.99,
     quantity: 4,
   },
   {
-    name: "Vodka",
+    name: "Russian Potato Salad",
     type: "liquor",
     price: 22.99,
     quantity: 6,
   },
   {
-    name: "Whiskey",
+    name: "Coder Kris's Rare Cask",
     type: "liquor",
     price: 27.99,
     quantity: 5,
   },
   {
-    name: "Gin",
+    name: "Gin-derella's Glass Sipper",
     type: "liquor",
     price: 27.99,
     quantity: 4,
   },
 ];
 let inventoryContainer = document.querySelector(".store");
+console.log(inventory);
 
 let display = () => {
   inventory.forEach((item, index) => {
@@ -97,7 +98,7 @@ let receiptContainer = document.querySelector(".receipt-container");
 let store = document.querySelector(".store");
 
 let cartArray = [];
-
+let subtotalContainer = document.querySelector(".sub-total");
 let displayCart = () => {
   receiptContainer.innerHTML = "";
   let subtotal = 0;
@@ -118,13 +119,30 @@ let displayCart = () => {
     receiptContainer.append(card);
     subtotal += item.price;
   });
-  let subtotalContainer = document.querySelector(".sub-total");
   let subTotal = document.createElement("p");
   subTotal.innerText = `This is your subtotal: $${subtotal}`;
 
-  receiptContainer.append(subTotal);
+  let checkoutButton = document.createElement("button");
+  checkoutButton.innerText = "checkout";
+  checkoutButton.classList.add("checkout");
+
+  receiptContainer.append(subTotal, checkoutButton);
   console.log(subtotal);
 };
+
+let checkout = document.querySelector(".checkout");
+checkout.addEventListener("click", (e) => {
+  if (e.target.classList.contains("checkout")) {
+    let paymentOption = document.querySelector(".pay-option");
+    paymentOption.innerText = "How would you like to pay?";
+    let payCash = document.createElement("button");
+    payCash.innerText = "Ca$h";
+    let payCard = document.createElement("button");
+    payCard.innerText = "Plastic";
+    checkout.append(paymentOption, payCard, payCash);
+  }
+});
+
 console.log(receiptContainer);
 store.addEventListener("click", (e) => {
   if (e.target.classList.contains("add")) {
