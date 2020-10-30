@@ -71,6 +71,7 @@ let display = () => {
 
     let type = document.createElement("p");
     type.classList.add(item.type);
+
     let itemInfo = document.createElement("div");
     // document.card.appendChild(itemInfo);
     itemInfo.classList.add("item-info");
@@ -79,11 +80,13 @@ let display = () => {
     name.innerText = item.name;
     let price = document.createElement("p");
     price.innerText = item.price;
-    itemInfo.appendChild(name, price);
+    itemInfo.append(name, price);
+
     let addToCartButton = document.createElement("button");
     addToCartButton.classList.add("add");
     addToCartButton.innerText = "Add";
     addToCartButton.setAttribute("data-index", index);
+
     card.append(type, name, price, addToCartButton);
     inventoryContainer.append(card);
   });
@@ -92,16 +95,44 @@ display();
 
 let receiptContainer = document.querySelector(".receipt-container");
 let store = document.querySelector(".store");
-// console.log(addToCartButton);
+
 let cartArray = [];
+
+let displayCart = () => {
+  cartArray.forEach((item, index) => {
+    let card = document.createElement("div");
+    card.classList.add("item-info");
+    let name = document.createElement("p");
+    name.innerText = item.name;
+    let price = document.createElement("p");
+    price.innerText = item.price;
+    // itemInfo.append(name, price);
+
+    let deleteFromCartButton = document.createElement("button");
+    deleteFromCartButton.classList.add("add");
+    deleteFromCartButton.innerText = "Delete";
+    deleteFromCartButton.setAttribute("data-index", index);
+    card.append(name, price, deleteFromCartButton);
+    receiptContainer.append(card);
+  });
+};
+console.log(receiptContainer);
 store.addEventListener("click", (e) => {
   if (e.target.classList.contains("add")) {
     let index = e.target.getAttribute("data-index");
     cartArray.push(inventory[index]);
-    console.log(cartArray);
+    displayCart();
   }
 });
 
+receiptContainer.addEventListener("click", (e) => {
+  if (e.target.classList.contains("add")) {
+    let index = e.target.getAttribute("data-index");
+    cartArray.splice(index, 1);
+  }
+});
+displayCart();
+console.log(cartArray);
 // let name = document.createElement("p");
 // name.innerText = item.name;
 // let price = document.createElement("p");
@@ -110,10 +141,10 @@ store.addEventListener("click", (e) => {
 // addToCartButton.addEventListener("click", () => {
 //   let name = inventory.name;
 //   let price = inventory.price;
-//   let newObject = {
-//     name: name,
-//     price: price,
-//   };
+// let newObject = {
+//   name: name,
+//   price: price,
+// };
 // });
 // console.log(addToCartButton);
 
