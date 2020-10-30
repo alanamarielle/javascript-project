@@ -121,14 +121,21 @@ store.addEventListener("click", (e) => {
   if (e.target.classList.contains("add")) {
     let index = e.target.getAttribute("data-index");
     cartArray.push(inventory[index]);
+    //array.push([index])
+    console.log(cartArray);
     displayCart();
   }
 });
+
+// let itemContainer = document.querySelector(".item-info");
 
 receiptContainer.addEventListener("click", (e) => {
   if (e.target.classList.contains("add")) {
     let index = e.target.getAttribute("data-index");
     cartArray.splice(index, 1);
+    //line of code below does not allow items to be added to cartArray
+    //but does remove items from cart
+    e.target.parentNode.remove();
   }
 });
 displayCart();
