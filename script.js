@@ -100,6 +100,7 @@ let cartArray = [];
 
 let displayCart = () => {
   receiptContainer.innerHTML = "";
+  let subtotal = 0;
   cartArray.forEach((item, index) => {
     let card = document.createElement("div");
     card.classList.add("item-info");
@@ -115,7 +116,14 @@ let displayCart = () => {
     deleteFromCartButton.setAttribute("data-index", index);
     card.append(name, price, deleteFromCartButton);
     receiptContainer.append(card);
+    subtotal += item.price;
   });
+  let subtotalContainer = document.querySelector(".sub-total");
+  let subTotal = document.createElement("p");
+  subTotal.innerText = `This is your subtotal: $${subtotal}`;
+
+  receiptContainer.append(subTotal);
+  console.log(subtotal);
 };
 console.log(receiptContainer);
 store.addEventListener("click", (e) => {
@@ -128,65 +136,12 @@ store.addEventListener("click", (e) => {
   }
 });
 
-// let itemContainer = document.querySelector(".item-info");
-
 receiptContainer.addEventListener("click", (e) => {
   if (e.target.classList.contains("add")) {
     let index = e.target.getAttribute("data-index");
     cartArray.splice(index, 1);
-    //line of code below does not allow items to be added to cartArray
-    //but does remove items from cart
-
-    // e.target.parentNode.remove();
     displayCart();
   }
 });
 
 console.log(cartArray);
-// let name = document.createElement("p");
-// name.innerText = item.name;
-// let price = document.createElement("p");
-// price.innerText = item.price;
-// let addToCartButton = document.querySelector("add");
-// addToCartButton.addEventListener("click", () => {
-//   let name = inventory.name;
-//   let price = inventory.price;
-// let newObject = {
-//   name: name,
-//   price: price,
-// };
-// });
-// console.log(addToCartButton);
-
-// let addToCart = document.querySelector(".add");
-// let item = document.querySelector(".item");
-
-// addToCart.addEventListener("click", (e) => {
-//   e.preventDefault();
-//   if (e.target.classList.contains("add")) {
-//     // let name = document.createElement("p");
-//     // inventory.name.innerText = name;
-//     // let price = document.createElement("p");
-//     // price.innerText = price;
-//     let index = e.target.getAttribute("data-index");
-//     // price.setAttribute("data-price", index);
-
-//     let name = inventory.name;
-//     let price = inventory.price;
-
-//     let newObject = {
-//       name: name,
-//       price: price,
-//     };
-
-//     // let deleteFromCart = document.createElement("button");
-//     // deleteFromCart.classList.add("delete");
-//     // deleteFromCart.innerText = "Remove From Cart";
-//     // deleteFromCart.setAttribute(index, "price");
-//     receiptContainer.append(newObject, index);
-//     console.log(addToCart);
-//     console.log(newObject);
-//   }
-//   cartArray.push(newObject);
-//   display();
-// });
