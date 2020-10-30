@@ -109,8 +109,6 @@ let displayCart = () => {
     name.innerText = item.name;
     let price = document.createElement("p");
     price.innerText = item.price;
-    // itemInfo.append(name, price);
-
     let deleteFromCartButton = document.createElement("button");
     deleteFromCartButton.classList.add("add");
     deleteFromCartButton.innerText = "Delete";
@@ -121,27 +119,26 @@ let displayCart = () => {
   });
   let subTotal = document.createElement("p");
   subTotal.innerText = `This is your subtotal: $${subtotal}`;
-
   let checkoutButton = document.createElement("button");
   checkoutButton.innerText = "checkout";
   checkoutButton.classList.add("checkout");
-
   receiptContainer.append(subTotal, checkoutButton);
   console.log(subtotal);
+  // let checkout = document.querySelector
+  checkoutButton.addEventListener("click", (e) => {
+    if (e.target.classList.contains("checkout")) {
+      let paymentOption = document.createElement("div");
+      paymentOption.classList.add("pay-option");
+      paymentOption.innerText = "How would you like to pay?";
+      let payCash = document.createElement("button");
+      payCash.innerText = "Ca$h";
+      let payCard = document.createElement("button");
+      payCard.innerText = "Plastic";
+      paymentOption.append(payCard, payCash);
+      receiptContainer.append(paymentOption);
+    }
+  });
 };
-
-let checkout = document.querySelector(".checkout");
-checkout.addEventListener("click", (e) => {
-  if (e.target.classList.contains("checkout")) {
-    let paymentOption = document.querySelector(".pay-option");
-    paymentOption.innerText = "How would you like to pay?";
-    let payCash = document.createElement("button");
-    payCash.innerText = "Ca$h";
-    let payCard = document.createElement("button");
-    payCard.innerText = "Plastic";
-    checkout.append(paymentOption, payCard, payCash);
-  }
-});
 
 console.log(receiptContainer);
 store.addEventListener("click", (e) => {
