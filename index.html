@@ -14,8 +14,12 @@
       <div class="desktop-flex">
         <div class="cart">
           <section class="checkout-container">
-            <!-- <div class="receipts"></div> ----dynamically added from js-->
-            <form class="form address">
+            <div class="receipt-container">
+                <!-- dynamically add receipt when sending things to cart -->
+                <h3>Your Cart</h3>
+                <div class="sub-total"></div>
+              </div>
+            <form class="form address hidden">
               <h2>Delivery Address</h2>
               <label for="address">Street Address</label>
               <input
@@ -35,7 +39,7 @@
               <button>Get Your Booze!</button>
             </form>
 
-            <form class="credit-card form">
+            <form class="credit-card form hidden">
               <h2>Credit Card Information</h2>
               <label for="name">Name On Credit Card</label>
               <input
@@ -56,16 +60,14 @@
               <button>Submit</button>
             </form>
 
-            <form class="form cash">
+            <form class="form cash hidden">
               <h2>Cash Payment</h2>
               <label for="cash">Cash Amount</label>
               <input type="text" id="cash" name="cash" />
               <button class="cash-pay">Pay</button>
             </form>
           </section>
-          <div class="receipt-container">
-            <!-- dynamically add receipt when sending things to cart -->
-          </div>
+          
         </div>
         <div class="store">
         
