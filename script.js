@@ -99,6 +99,7 @@ let store = document.querySelector(".store");
 let cartArray = [];
 
 let displayCart = () => {
+  receiptContainer.innerHTML = "";
   cartArray.forEach((item, index) => {
     let card = document.createElement("div");
     card.classList.add("item-info");
@@ -135,10 +136,12 @@ receiptContainer.addEventListener("click", (e) => {
     cartArray.splice(index, 1);
     //line of code below does not allow items to be added to cartArray
     //but does remove items from cart
-    e.target.parentNode.remove();
+
+    // e.target.parentNode.remove();
+    displayCart();
   }
 });
-displayCart();
+
 console.log(cartArray);
 // let name = document.createElement("p");
 // name.innerText = item.name;
