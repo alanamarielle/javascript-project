@@ -155,8 +155,6 @@ console.log(receiptContainer);
 
 store.addEventListener("click", (e) => {
   if (e.target.classList.contains("add")) {
-    receiptContainer.classList.toggle("hidden");
-
     let index = e.target.getAttribute("data-index");
     cartArray.push(inventory[index]);
     //array.push([index])
@@ -170,6 +168,9 @@ receiptContainer.addEventListener("click", (e) => {
     let index = e.target.getAttribute("data-index");
     cartArray.splice(index, 1);
     displayCart();
+  }
+  if (cartArray.length === 0) {
+    location.reload();
   }
 });
 
