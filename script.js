@@ -95,8 +95,11 @@ let store = document.querySelector(".store");
 
 let cartArray = [];
 let subtotalContainer = document.querySelector(".sub-total");
+
 let displayCart = () => {
   receiptContainer.innerHTML = "";
+  receiptContainer.innerText = "Your Cart";
+
   let subtotal = 0;
   cartArray.forEach((item, index) => {
     let card = document.createElement("div");
@@ -113,6 +116,7 @@ let displayCart = () => {
     receiptContainer.append(card);
     subtotal += item.price;
   });
+
   let subTotal = document.createElement("p");
   subTotal.innerText = `This is your subtotal: $${subtotal}`;
   let checkoutButton = document.createElement("button");
@@ -124,6 +128,7 @@ let displayCart = () => {
   receiptContainer.append(subTotal, checkoutButton, continueShopping);
   console.log(subtotal);
   // let checkout = document.querySelector
+
   checkoutButton.addEventListener("click", (e) => {
     if (e.target.classList.contains("checkout")) {
       let paymentOption = document.createElement("div");
@@ -147,12 +152,11 @@ let displayCart = () => {
 };
 
 console.log(receiptContainer);
+
 store.addEventListener("click", (e) => {
   if (e.target.classList.contains("add")) {
     receiptContainer.classList.toggle("hidden");
-    let yourCart = document.createElement("h3");
-    yourCart.innerText = "Your Cart";
-    receiptContainer.append(yourCart);
+
     let index = e.target.getAttribute("data-index");
     cartArray.push(inventory[index]);
     //array.push([index])
@@ -162,7 +166,7 @@ store.addEventListener("click", (e) => {
 });
 
 receiptContainer.addEventListener("click", (e) => {
-  if (e.target.classList.contains("add")) {
+  if (e.target.classList.contains("delete")) {
     let index = e.target.getAttribute("data-index");
     cartArray.splice(index, 1);
     displayCart();
