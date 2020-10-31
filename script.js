@@ -80,7 +80,7 @@ let display = () => {
     itemInfo.append(name, price);
 
     let addToCartButton = document.createElement("button");
-    addToCartButton.classList.add("add");
+    addToCartButton.classList.add("add", "button");
     addToCartButton.innerText = "Add";
     addToCartButton.setAttribute("data-index", index);
 
@@ -106,7 +106,7 @@ let displayCart = () => {
     let price = document.createElement("p");
     price.innerText = item.price;
     let deleteFromCartButton = document.createElement("button");
-    deleteFromCartButton.classList.add("delete");
+    deleteFromCartButton.classList.add("delete", "button");
     deleteFromCartButton.innerText = "Delete";
     deleteFromCartButton.setAttribute("data-index", index);
     card.append(name, price, deleteFromCartButton);
@@ -116,9 +116,12 @@ let displayCart = () => {
   let subTotal = document.createElement("p");
   subTotal.innerText = `This is your subtotal: $${subtotal}`;
   let checkoutButton = document.createElement("button");
-  checkoutButton.innerText = "checkout";
-  checkoutButton.classList.add("checkout");
-  receiptContainer.append(subTotal, checkoutButton);
+  checkoutButton.innerText = "Checkout";
+  checkoutButton.classList.add("checkout", "button");
+  let continueShopping = document.createElement("button");
+  continueShopping.innerText = "Keep Shopping";
+  continueShopping.classList.add("checkout", "button");
+  receiptContainer.append(subTotal, checkoutButton, continueShopping);
   console.log(subtotal);
   // let checkout = document.querySelector
   checkoutButton.addEventListener("click", (e) => {
@@ -128,10 +131,17 @@ let displayCart = () => {
       paymentOption.innerText = "How would you like to pay?";
       let payCash = document.createElement("button");
       payCash.innerText = "Ca$h";
+      payCash.classList.add("button");
       let payCard = document.createElement("button");
       payCard.innerText = "Plastic";
+      payCard.classList.add("button");
       paymentOption.append(payCard, payCash);
       receiptContainer.append(paymentOption);
+    }
+  });
+  continueShopping.addEventListener("click", (e) => {
+    if (e.target.classList.contains("continue")) {
+      receiptContainer.classList.add("hidden");
     }
   });
 };
@@ -139,6 +149,10 @@ let displayCart = () => {
 console.log(receiptContainer);
 store.addEventListener("click", (e) => {
   if (e.target.classList.contains("add")) {
+    receiptContainer.classList.toggle("hidden");
+    let yourCart = document.createElement("h3");
+    yourCart.innerText = "Your Cart";
+    receiptContainer.append(yourCart);
     let index = e.target.getAttribute("data-index");
     cartArray.push(inventory[index]);
     //array.push([index])
