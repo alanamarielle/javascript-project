@@ -118,7 +118,7 @@ let displayCart = () => {
   });
 
   let subTotal = document.createElement("p");
-  subTotal.innerText = `This is your subtotal: $${subtotal}`;
+  subTotal.innerText = `This is your subtotal: $${subtotal.toFixed(2)}`;
   let checkoutButton = document.createElement("button");
   checkoutButton.innerText = "Checkout";
   checkoutButton.classList.add("checkout", "button");
@@ -129,12 +129,14 @@ let displayCart = () => {
   console.log(subtotal);
   // let checkout = document.querySelector
 
+  let payCash = document.createElement("button");
+
   checkoutButton.addEventListener("click", (e) => {
     if (e.target.classList.contains("checkout")) {
       let paymentOption = document.createElement("div");
       paymentOption.classList.add("pay-option");
       paymentOption.innerText = "How would you like to pay?";
-      let payCash = document.createElement("button");
+      //   let payCash = document.createElement("button");
       payCash.innerText = "Ca$h";
       payCash.classList.add("button");
       let payCard = document.createElement("button");
@@ -143,11 +145,16 @@ let displayCart = () => {
       paymentOption.append(payCard, payCash);
       receiptContainer.append(paymentOption);
     }
-  });
-  continueShopping.addEventListener("click", (e) => {
-    if (e.target.classList.contains("continue")) {
-      receiptContainer.classList.add("hidden");
-    }
+
+    payCash.addEventListener("click", () => {
+      let cashCheckOut = document.createElement("div");
+      cashCheckOut.classList.add("finish", "cash");
+      let cashInput = document.createElement("input");
+      let finalTotal = (subtotal * 0.06 + subtotal).toFixed(2);
+      cashCheckOut.innerText = `Your total is : $${finalTotal}`;
+      cashCheckOut.append(cashInput);
+      receiptContainer.append(cashCheckOut);
+    });
   });
 };
 

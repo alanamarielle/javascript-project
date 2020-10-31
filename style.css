@@ -93,21 +93,13 @@ p {
 .checkout {
   background-color: gray;
 }
-/* .wine {
-  height: 10px;
-  width: 100%;
-  background-color: #8f2407;
+
+.finish {
+  height: 200px;
+  width: 200px;
+  background-color: beige;
 }
-.beer {
-  height: 20px;
-  width: 100%;
-  background-color: #e6b839;
-}
-.liquor {
-  height: 20px;
-  width: 100%;
-  background-color: #d6e591;
-} */
+
 .footer {
   flex: 1;
   height: 400px;
