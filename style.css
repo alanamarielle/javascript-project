@@ -10,10 +10,14 @@ h2 {
   margin: 0;
 }
 .header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: #ff8d6e;
   height: 100px;
 }
 .header-h1 {
+  font-size: 25px;
   text-align: center;
 }
 .hidden {
@@ -23,16 +27,17 @@ h2 {
   height: max-content;
   display: flex;
   flex-direction: column;
-  background-color: #32b38c;
 }
 .cart {
   border: 1px solid black;
 }
 .receipt-container {
+  /* display: flex;
+  flex-direction: column; */
   border: 1px solid black;
   background-color: #8f2407;
-  height: 600px;
-  width: 600px;
+  height: min-content;
+  width: 100%;
 }
 
 .pay-option {
@@ -42,6 +47,7 @@ h2 {
 
 .store {
   height: 100%;
+  padding: 20px;
   display: flex;
   flex-direction: column;
   background-color: lightgray;
@@ -52,8 +58,8 @@ h2 {
   background-color: azure;
   border: 1px solid black;
   margin: 20px;
-  height: 200px;
-  width: 200px;
+  height: 100px;
+  width: 100px;
 }
 .info {
   height: 100px;
@@ -61,12 +67,15 @@ h2 {
 }
 .add {
   background-color: yellow;
-  color: black;
   width: 45px;
   height: 45px;
 }
-.wine {
-  height: 20px;
+.delete {
+  background-color: yellow;
+  width: fit-content;
+}
+/* .wine {
+  height: 10px;
   width: 100%;
   background-color: #8f2407;
 }
@@ -79,7 +88,7 @@ h2 {
   height: 20px;
   width: 100%;
   background-color: #d6e591;
-}
+} */
 .footer {
   flex: 1;
   height: 400px;

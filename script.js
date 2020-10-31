@@ -69,10 +69,6 @@ let display = () => {
   inventory.forEach((item, index) => {
     let card = document.createElement("div");
     card.classList.add("item");
-
-    let type = document.createElement("p");
-    type.classList.add(item.type);
-
     let itemInfo = document.createElement("div");
     // document.card.appendChild(itemInfo);
     itemInfo.classList.add("item-info");
@@ -88,7 +84,7 @@ let display = () => {
     addToCartButton.innerText = "Add";
     addToCartButton.setAttribute("data-index", index);
 
-    card.append(type, name, price, addToCartButton);
+    card.append(name, price, addToCartButton);
     inventoryContainer.append(card);
   });
 };
@@ -110,7 +106,7 @@ let displayCart = () => {
     let price = document.createElement("p");
     price.innerText = item.price;
     let deleteFromCartButton = document.createElement("button");
-    deleteFromCartButton.classList.add("add");
+    deleteFromCartButton.classList.add("delete");
     deleteFromCartButton.innerText = "Delete";
     deleteFromCartButton.setAttribute("data-index", index);
     card.append(name, price, deleteFromCartButton);
