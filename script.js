@@ -1,5 +1,4 @@
 "use strict";
-
 let inventory = [
   {
     name: "Mommy's Time Out",
@@ -8,7 +7,7 @@ let inventory = [
     quantity: 0,
   },
   {
-    name: "Girl's Night",
+    name: "Girls' Night",
     type: "wine",
     price: 15.99,
     quantity: 45,
@@ -64,7 +63,6 @@ let inventory = [
 ];
 let inventoryContainer = document.querySelector(".store");
 console.log(inventory);
-
 let display = () => {
   inventory.forEach((item, index) => {
     let card = document.createElement("div");
@@ -78,28 +76,22 @@ let display = () => {
     let price = document.createElement("p");
     price.innerText = item.price;
     itemInfo.append(name, price);
-
     let addToCartButton = document.createElement("button");
     addToCartButton.classList.add("add", "button");
-    addToCartButton.innerText = "Add to cart";
+    addToCartButton.innerText = "Add";
     addToCartButton.setAttribute("data-index", index);
-
     card.append(name, price, addToCartButton);
     inventoryContainer.append(card);
   });
 };
 display();
-
 let receiptContainer = document.querySelector(".receipt-container");
 let store = document.querySelector(".store");
-
 let cartArray = [];
 let subtotalContainer = document.querySelector(".sub-total");
-
 let displayCart = () => {
   receiptContainer.innerHTML = "";
   receiptContainer.innerText = "Your Cart";
-
   let subtotal = 0;
   cartArray.forEach((item, index) => {
     let card = document.createElement("div");
@@ -110,30 +102,25 @@ let displayCart = () => {
     price.innerText = item.price;
     let deleteFromCartButton = document.createElement("button");
     deleteFromCartButton.classList.add("delete", "button");
-    deleteFromCartButton.innerText = "Remove from cart";
+    deleteFromCartButton.innerText = "Delete";
     deleteFromCartButton.setAttribute("data-index", index);
     card.append(name, price, deleteFromCartButton);
     receiptContainer.append(card);
     subtotal += item.price;
   });
-
   let subTotal = document.createElement("p");
   subTotal.innerText = `This is your subtotal: $${subtotal.toFixed(2)}`;
   let checkoutButton = document.createElement("button");
   checkoutButton.innerText = "Checkout";
   checkoutButton.classList.add("checkout", "button");
-  // let continueShopping = document.createElement("button");
-  // continueShopping.innerText = "Keep Shopping";
-  // continueShopping.classList.add("checkout", "button");
-  receiptContainer.append(subTotal, checkoutButton);
+  let continueShopping = document.createElement("button");
+  continueShopping.innerText = "Keep Shopping";
+  continueShopping.classList.add("checkout", "button");
+  receiptContainer.append(subTotal, checkoutButton, continueShopping);
   console.log(subtotal);
   // let checkout = document.querySelector
-
   let payCash = document.createElement("button");
-  let payCard = document.createElement("button");
-
   checkoutButton.addEventListener("click", (e) => {
-    checkoutButton.classList.add("hidden");
     if (e.target.classList.contains("checkout")) {
       let paymentOption = document.createElement("div");
       paymentOption.classList.add("pay-option");
@@ -141,46 +128,45 @@ let displayCart = () => {
       //   let payCash = document.createElement("button");
       payCash.innerText = "Ca$h";
       payCash.classList.add("button");
+      let payCard = document.createElement("button");
       payCard.innerText = "Plastic";
       payCard.classList.add("button");
       paymentOption.append(payCard, payCash);
       receiptContainer.append(paymentOption);
     }
+    let cashCheckOut = document.createElement("div");
     payCash.addEventListener("click", () => {
-      let cashCheckOut = document.createElement("div");
       cashCheckOut.classList.add("finish", "cash");
       let subP = document.createElement("p");
       subP.innerText = `Subtotal : $${subtotal}`;
       let taxP = document.createElement("p");
       taxP = `Tax : $${(subtotal * 0.06).toFixed(2)}`;
-      let finalTotal = (subtotal * 0.06 + subtotal).toFixed(2);
-      let subSubP = document.createElement("p");
-      subSubP.innerText = `Your total is : $${finalTotal}`;
       let cashInput = document.createElement("input");
       cashInput.setAttribute("placeholder", "Cash Tender");
       cashInput.setAttribute("id", "tender");
       cashInput.setAttribute("type", "number");
-      cashCheckOut.append(subP, taxP, subSubP, cashInput, changeButton);
+      cashInput.setAttribute("step", "0.01");
+      let finalTotal = (subtotal * 0.06 + subtotal).toFixed(2);
+      cashCheckOut.innerText = `Your total is : $${finalTotal}`;
+      cashCheckOut.append(subP, taxP, cashInput, changeButton);
       receiptContainer.append(cashCheckOut);
     });
     let changeButton = document.createElement("button");
-    changeButton.classList.add("button");
-    changeButton.setAttribute("type", "submit");
-    changeButton.innerText = "Get Change";
-    changeButton.addEventListener("submit", () => {
-      let tender = document.getFormData("tender");
+    let onChangeButtonClick = () => {
+      let tender = document.getElementById("tender").value;
       let changeP = document.createElement("p");
-      let finalTotal = (subtotal * 0.06 + subtotal).toFixed(2);
-      let change = parseInt(tender - finalTotal);
-      changeP.innerText = change;
+      let finalTotal = subtotal * 0.06 + subtotal;
+      let change = parseFloat(tender) - finalTotal;
+      changeP.innerText = "Your change: " + change.toFixed(2);
       cashCheckOut.append(changeP);
       console.log(tender);
-    });
+      changeButton.removeEventListener("click", onChangeButtonClick);
+    };
+    // changeButton.setAttribute("type", "submit");
+    changeButton.addEventListener("click", onChangeButtonClick);
   });
 };
-
 console.log(receiptContainer);
-
 store.addEventListener("click", (e) => {
   if (e.target.classList.contains("add")) {
     let index = e.target.getAttribute("data-index");
@@ -190,7 +176,6 @@ store.addEventListener("click", (e) => {
     displayCart();
   }
 });
-
 receiptContainer.addEventListener("click", (e) => {
   if (e.target.classList.contains("delete")) {
     let index = e.target.getAttribute("data-index");
@@ -201,5 +186,4 @@ receiptContainer.addEventListener("click", (e) => {
     location.reload();
   }
 });
-
 console.log(cartArray);
