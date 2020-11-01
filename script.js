@@ -1,5 +1,4 @@
 "use strict";
-
 let inventory = [
   {
     name: "Mommy's Time Out",
@@ -64,7 +63,6 @@ let inventory = [
 ];
 let inventoryContainer = document.querySelector(".store");
 console.log(inventory);
-
 let display = () => {
   inventory.forEach((item, index) => {
     let card = document.createElement("div");
@@ -78,28 +76,22 @@ let display = () => {
     let price = document.createElement("p");
     price.innerText = item.price;
     itemInfo.append(name, price);
-
     let addToCartButton = document.createElement("button");
     addToCartButton.classList.add("add", "button");
     addToCartButton.innerText = "Add";
     addToCartButton.setAttribute("data-index", index);
-
     card.append(name, price, addToCartButton);
     inventoryContainer.append(card);
   });
 };
 display();
-
 let receiptContainer = document.querySelector(".receipt-container");
 let store = document.querySelector(".store");
-
 let cartArray = [];
 let subtotalContainer = document.querySelector(".sub-total");
-
 let displayCart = () => {
   receiptContainer.innerHTML = "";
   receiptContainer.innerText = "Your Cart";
-
   let subtotal = 0;
   cartArray.forEach((item, index) => {
     let card = document.createElement("div");
@@ -116,7 +108,6 @@ let displayCart = () => {
     receiptContainer.append(card);
     subtotal += item.price;
   });
-
   let subTotal = document.createElement("p");
   subTotal.innerText = `This is your subtotal: $${subtotal.toFixed(2)}`;
   let checkoutButton = document.createElement("button");
@@ -128,9 +119,7 @@ let displayCart = () => {
   receiptContainer.append(subTotal, checkoutButton, continueShopping);
   console.log(subtotal);
   // let checkout = document.querySelector
-
   let payCash = document.createElement("button");
-
   checkoutButton.addEventListener("click", (e) => {
     if (e.target.classList.contains("checkout")) {
       let paymentOption = document.createElement("div");
@@ -153,7 +142,6 @@ let displayCart = () => {
       let taxP = document.createElement("p");
       taxP = `Tax : $${(subtotal * 0.06).toFixed(2)}`;
       let cashInput = document.createElement("input");
-
       cashInput.setAttribute("placeholder", "Cash Tender");
       cashInput.setAttribute("id", "tender");
       cashInput.setAttribute("type", "number");
@@ -178,9 +166,7 @@ let displayCart = () => {
     changeButton.addEventListener("click", onChangeButtonClick);
   });
 };
-
 console.log(receiptContainer);
-
 store.addEventListener("click", (e) => {
   if (e.target.classList.contains("add")) {
     let index = e.target.getAttribute("data-index");
@@ -190,7 +176,6 @@ store.addEventListener("click", (e) => {
     displayCart();
   }
 });
-
 receiptContainer.addEventListener("click", (e) => {
   if (e.target.classList.contains("delete")) {
     let index = e.target.getAttribute("data-index");
@@ -201,5 +186,4 @@ receiptContainer.addEventListener("click", (e) => {
     location.reload();
   }
 });
-
 console.log(cartArray);
