@@ -145,21 +145,32 @@ let displayCart = () => {
       paymentOption.append(payCard, payCash);
       receiptContainer.append(paymentOption);
     }
-
+    let cashCheckOut = document.createElement("div");
     payCash.addEventListener("click", () => {
-      let cashCheckOut = document.createElement("div");
       cashCheckOut.classList.add("finish", "cash");
       let subP = document.createElement("p");
       subP.innerText = `Subtotal : $${subtotal}`;
       let taxP = document.createElement("p");
       taxP = `Tax : $${(subtotal * 0.06).toFixed(2)}`;
       let cashInput = document.createElement("input");
-      cashInput.setAttribute("placeholder", "Cash Tender");
-      let finalTotal = (subtotal * 0.06 + subtotal).toFixed(2);
 
+      cashInput.setAttribute("placeholder", "Cash Tender");
+      cashInput.setAttribute("id", "tender");
+      let finalTotal = (subtotal * 0.06 + subtotal).toFixed(2);
       cashCheckOut.innerText = `Your total is : $${finalTotal}`;
-      cashCheckOut.append(subP, taxP, cashInput);
+      cashCheckOut.append(subP, taxP, cashInput, changeButton);
       receiptContainer.append(cashCheckOut);
+    });
+    let changeButton = document.createElement("button");
+    // changeButton.setAttribute("type", "submit");
+    changeButton.addEventListener("click", () => {
+      let tender = document.getElementById("tender");
+      let changeP = document.createElement("p");
+      let finalTotal = (subtotal * 0.06 + subtotal).toFixed(2);
+      let change = parseInt(tender - finalTotal);
+      changeP.innerText = change;
+      cashCheckOut.append(changeP);
+      console.log(tender);
     });
   });
 };
