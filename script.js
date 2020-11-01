@@ -8,7 +8,7 @@ let inventory = [
     quantity: 0,
   },
   {
-    name: "Girl's Night",
+    name: "Girls' Night",
     type: "wine",
     price: 15.99,
     quantity: 45,
@@ -156,22 +156,26 @@ let displayCart = () => {
 
       cashInput.setAttribute("placeholder", "Cash Tender");
       cashInput.setAttribute("id", "tender");
+      cashInput.setAttribute("type", "number");
+      cashInput.setAttribute("step", "0.01");
       let finalTotal = (subtotal * 0.06 + subtotal).toFixed(2);
       cashCheckOut.innerText = `Your total is : $${finalTotal}`;
       cashCheckOut.append(subP, taxP, cashInput, changeButton);
       receiptContainer.append(cashCheckOut);
     });
     let changeButton = document.createElement("button");
-    // changeButton.setAttribute("type", "submit");
-    changeButton.addEventListener("click", () => {
-      let tender = document.getElementById("tender");
+    let onChangeButtonClick = () => {
+      let tender = document.getElementById("tender").value;
       let changeP = document.createElement("p");
-      let finalTotal = (subtotal * 0.06 + subtotal).toFixed(2);
-      let change = parseInt(tender - finalTotal);
-      changeP.innerText = change;
+      let finalTotal = subtotal * 0.06 + subtotal;
+      let change = parseFloat(tender) - finalTotal;
+      changeP.innerText = "Your change: " + change.toFixed(2);
       cashCheckOut.append(changeP);
       console.log(tender);
-    });
+      changeButton.removeEventListener("click", onChangeButtonClick);
+    };
+    // changeButton.setAttribute("type", "submit");
+    changeButton.addEventListener("click", onChangeButtonClick);
   });
 };
 
