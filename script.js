@@ -130,6 +130,7 @@ let displayCart = () => {
   // let checkout = document.querySelector
 
   let payCash = document.createElement("button");
+  let payCard = document.createElement("button");
 
   checkoutButton.addEventListener("click", (e) => {
     checkoutButton.classList.add("hidden");
@@ -140,32 +141,34 @@ let displayCart = () => {
       //   let payCash = document.createElement("button");
       payCash.innerText = "Ca$h";
       payCash.classList.add("button");
-      let payCard = document.createElement("button");
       payCard.innerText = "Plastic";
       payCard.classList.add("button");
       paymentOption.append(payCard, payCash);
       receiptContainer.append(paymentOption);
     }
-    let cashCheckOut = document.createElement("div");
     payCash.addEventListener("click", () => {
+      let cashCheckOut = document.createElement("div");
       cashCheckOut.classList.add("finish", "cash");
       let subP = document.createElement("p");
       subP.innerText = `Subtotal : $${subtotal}`;
       let taxP = document.createElement("p");
       taxP = `Tax : $${(subtotal * 0.06).toFixed(2)}`;
+      let finalTotal = (subtotal * 0.06 + subtotal).toFixed(2);
+      let subSubP = document.createElement("p");
+      subSubP.innerText = `Your total is : $${finalTotal}`;
       let cashInput = document.createElement("input");
-
       cashInput.setAttribute("placeholder", "Cash Tender");
       cashInput.setAttribute("id", "tender");
-      let finalTotal = (subtotal * 0.06 + subtotal).toFixed(2);
-      cashCheckOut.innerText = `Your total is : $${finalTotal}`;
-      cashCheckOut.append(subP, taxP, cashInput, changeButton);
+      cashInput.setAttribute("type", "number");
+      cashCheckOut.append(subP, taxP, subSubP, cashInput, changeButton);
       receiptContainer.append(cashCheckOut);
     });
     let changeButton = document.createElement("button");
-    // changeButton.setAttribute("type", "submit");
-    changeButton.addEventListener("click", () => {
-      let tender = document.getElementById("tender");
+    changeButton.classList.add("button");
+    changeButton.setAttribute("type", "submit");
+    changeButton.innerText = "Get Change";
+    changeButton.addEventListener("submit", () => {
+      let tender = document.getFormData("tender");
       let changeP = document.createElement("p");
       let finalTotal = (subtotal * 0.06 + subtotal).toFixed(2);
       let change = parseInt(tender - finalTotal);
