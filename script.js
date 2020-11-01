@@ -81,7 +81,7 @@ let display = () => {
 
     let addToCartButton = document.createElement("button");
     addToCartButton.classList.add("add", "button");
-    addToCartButton.innerText = "Add";
+    addToCartButton.innerText = "Add to cart";
     addToCartButton.setAttribute("data-index", index);
 
     card.append(name, price, addToCartButton);
@@ -110,7 +110,7 @@ let displayCart = () => {
     price.innerText = item.price;
     let deleteFromCartButton = document.createElement("button");
     deleteFromCartButton.classList.add("delete", "button");
-    deleteFromCartButton.innerText = "Delete";
+    deleteFromCartButton.innerText = "Remove from cart";
     deleteFromCartButton.setAttribute("data-index", index);
     card.append(name, price, deleteFromCartButton);
     receiptContainer.append(card);
@@ -122,16 +122,17 @@ let displayCart = () => {
   let checkoutButton = document.createElement("button");
   checkoutButton.innerText = "Checkout";
   checkoutButton.classList.add("checkout", "button");
-  let continueShopping = document.createElement("button");
-  continueShopping.innerText = "Keep Shopping";
-  continueShopping.classList.add("checkout", "button");
-  receiptContainer.append(subTotal, checkoutButton, continueShopping);
+  // let continueShopping = document.createElement("button");
+  // continueShopping.innerText = "Keep Shopping";
+  // continueShopping.classList.add("checkout", "button");
+  receiptContainer.append(subTotal, checkoutButton);
   console.log(subtotal);
   // let checkout = document.querySelector
 
   let payCash = document.createElement("button");
 
   checkoutButton.addEventListener("click", (e) => {
+    checkoutButton.classList.add("hidden");
     if (e.target.classList.contains("checkout")) {
       let paymentOption = document.createElement("div");
       paymentOption.classList.add("pay-option");

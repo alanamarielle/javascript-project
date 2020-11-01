@@ -1,8 +1,9 @@
 colors {
-  color: #ff8d6e;
-  color: #8f2407;
-  color: #32b38c;
-  color: #abffe6;
+  color: #f7f2b2;
+  color: #adcf4f;
+  color: #84815b;
+  color: #4a1a2c;
+  color: #8e3557;
 }
 body,
 h1,
@@ -14,11 +15,12 @@ p {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #ff8d6e;
+  background-color: #8e3557;
   height: 100px;
 }
 .header-h1 {
   font-family: "Comfortaa", cursive;
+  color: #f7f2b2;
   font-size: 25px;
   text-align: center;
 }
@@ -38,8 +40,9 @@ p {
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 1px solid black;
-  background-color: #8f2407;
+  text-align: center;
+  border-top: 2px solid black;
+  background-color: #8e3557;
   height: min-content;
   width: 100%;
 }
@@ -59,21 +62,22 @@ p {
   padding: 20px;
   display: flex;
   flex-direction: column;
+  align-items: center;
   background-color: lightgray;
 }
 .item {
   display: flex;
   flex-direction: column;
+  background-color: white;
+  align-items: center;
   text-align: center;
-  background-color: azure;
-  border: 1px solid black;
   margin: 20px;
   height: 100px;
   width: 250px;
 }
 .item-info {
-  background-color: blanchedalmond;
   border: 1px solid black;
+  background-color: white;
   height: 100px;
   width: 200px;
 }
@@ -81,17 +85,18 @@ p {
   padding: 10px;
   margin: 5px;
   border: none;
+  width: 80%;
   border-radius: 20px;
-  background-color: blueviolet;
 }
 .add {
-  background-color: yellow;
+  background-color: #f7f2b2;
 }
 .delete {
-  background-color: red;
+  background-color: black;
+  color: white;
 }
 .checkout {
-  background-color: gray;
+  background-color: #adcf4f;
 }
 
 .finish {
@@ -99,7 +104,11 @@ p {
   width: 200px;
   background-color: beige;
 }
-
+.recipes {
+  color: #84815b;
+  background-color: beige;
+  text-align: center;
+}
 .footer {
   flex: 1;
   height: 400px;
