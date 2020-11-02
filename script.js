@@ -229,7 +229,7 @@ let displayCart = () => {
       if (change < 0) {
         changeP.innerText = `Sorry, this is not sufficient`;
       } else {
-        changeP.innerText = "Your change is " + change.toFixed(2);
+        changeP.innerText = "Your change is $" + change.toFixed(2);
       }
       let cashReceipt = document.createElement("div");
       cashReceipt.classList.add("pay-option");

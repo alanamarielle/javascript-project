@@ -68,7 +68,7 @@ p {
 }
 .receipt {
   height: 200px;
-  width: 200px;
+  width: max-content;
 }
 .store {
   height: 100%;
