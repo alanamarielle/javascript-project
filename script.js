@@ -151,10 +151,10 @@ let displayCart = () => {
       paymentOption.innerText = "How would you like to pay?";
 
       payCash.innerText = "Cash";
-      payCash.classList.add("button");
+      payCash.classList.add("button", "checkout");
 
       payCard.innerText = "Credit/Debit";
-      payCard.classList.add("button");
+      payCard.classList.add("button", "checkout");
       paymentOption.append(payCard, payCash);
       receiptContainer.append(paymentOption);
     }

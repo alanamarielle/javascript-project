@@ -22,7 +22,7 @@ p {
 .header-h1 {
   font-family: "Comfortaa", cursive;
   color: #f7f2b2;
-  font-size: 25px;
+  font-size: 2em;
   text-align: center;
 }
 .hidden {
@@ -77,6 +77,10 @@ p {
   flex-direction: column;
   align-items: center;
   background-color: lightgray;
+}
+.accent {
+  color: #4a1a2c;
+  padding: 20px;
 }
 .item {
   display: flex;
@@ -134,13 +138,14 @@ p {
   background-color: beige;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
   text-align: center;
   align-items: center;
 }
 .image-container {
   height: 200px;
   width: 200px;
+  margin: 20px;
 }
 .footer {
   height: 100px;
