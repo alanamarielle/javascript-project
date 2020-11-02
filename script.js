@@ -150,10 +150,10 @@ let displayCart = () => {
       paymentOption.classList.add("pay-option");
       paymentOption.innerText = "How would you like to pay?";
 
-      payCash.innerText = "Ca$h";
+      payCash.innerText = "Cash";
       payCash.classList.add("button");
 
-      payCard.innerText = "Plastic";
+      payCard.innerText = "Credit/Debit";
       payCard.classList.add("button");
       paymentOption.append(payCard, payCash);
       receiptContainer.append(paymentOption);
@@ -176,22 +176,22 @@ let displayCart = () => {
         creditCardReceipt.classList.add("pay-option");
 
         let index = e.target.getAttribute("data-index");
+        let finalTotal = `This is your total: $${(
+          subtotal * 0.06 +
+          subtotal
+        ).toFixed(2)}`;
 
         cartArray.forEach((item) => {
-          // let card = document.createElement("div");
-          // card.classList.add("item-info");
           let name = document.createElement("p");
           name.innerText = item.name;
           let price = document.createElement("p");
           price.innerText = item.price;
-          // card.append(name, price);
-          let creditCardReceipt = document.createElement("p");
-          creditCardReceipt.innerText = `Thanks for shopping at Not Your Mama's Cocktail Cart , ${customerName}`;
-          let finalTotal = (subtotal * 0.06 + subtotal).toFixed(2);
-          // receipt.append(finalTotal);
-          creditCardReceipt.append(name, price, finalTotal);
-          receiptContainer.append(creditCardReceipt);
+
+          creditCardReceipt.append(name, price);
         });
+        let receiptText = document.createElement("p");
+        receiptText.innerText = `Thanks for shopping at Not Your Mama's Cocktail Cart , ${customerName}`;
+        receiptContainer.append(receiptText, creditCardReceipt, finalTotal);
         console.log(creditCardReceipt);
       });
     });
@@ -221,9 +221,10 @@ let displayCart = () => {
       let changeP = document.createElement("p");
 
       let finalTotal = subtotal * 0.06 + subtotal;
+      //   finalTotal.innerText = `This is your total: $${finalTotal}`;
       let change = parseFloat(tender) - parseFloat(finalTotal);
       if (change < 0) {
-        changeP.innerText = `Gimme mo' monay!`;
+        changeP.innerText = `Sorry, this is not sufficient`;
       } else {
         changeP.innerText = "Your change is " + change.toFixed(2);
       }
@@ -240,7 +241,11 @@ let displayCart = () => {
 
       let receiptText = document.createElement("p");
       receiptText.innerText = `Thanks for shopping at Not Your Mama's Cocktail Cart `;
-      receiptContainer.append(receiptText, cashReceipt, finalTotal.toFixed(2));
+      receiptContainer.append(
+        receiptText,
+        cashReceipt,
+        `This is your total: $${finalTotal.toFixed(2)}`
+      );
       // cashCheckOut.append(changeP, receiptText, cashReceipt);
 
       console.log(tender);
