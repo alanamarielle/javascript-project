@@ -247,6 +247,7 @@ let displayCart = () => {
       receiptContainer.append(
         receiptText,
         cashReceipt,
+        changeP,
         `This is your total: $${finalTotal.toFixed(2)}`
       );
       // cashCheckOut.append(changeP, receiptText, cashReceipt);
