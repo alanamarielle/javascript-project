@@ -138,6 +138,18 @@ let displayCart = () => {
 
     payCard.addEventListener("click", () => {
       creditCardInfo.classList.toggle("hidden");
+      let form = document.querySelector(".form");
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        let capture = new FormData(form);
+        let customerName = capture.get("name");
+        let number = capture.get("number");
+        let cvv = capture.get("cvv");
+
+        let creditCardReceipt = document.createElement("div");
+        creditCardReceipt.classList.add("receipt");
+        creditCardReceipt.innerText = customerName;
+      });
     });
 
     let cashCheckOut = document.createElement("div");

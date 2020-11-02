@@ -64,7 +64,11 @@ p {
   height: 250px;
   width: 250px;
 }
-
+.receipt {
+  z-index: 3;
+  height: 200px;
+  width: 200px;
+}
 .store {
   height: 100%;
   padding: 20px;
