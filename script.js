@@ -113,14 +113,13 @@ let displayCart = () => {
   let checkoutButton = document.createElement("button");
   checkoutButton.innerText = "Checkout";
   checkoutButton.classList.add("checkout", "button");
-  let continueShopping = document.createElement("button");
-  continueShopping.innerText = "Keep Shopping";
-  continueShopping.classList.add("checkout", "button");
-  receiptContainer.append(subTotal, checkoutButton, continueShopping);
+  receiptContainer.append(subTotal, checkoutButton);
   console.log(subtotal);
   // let checkout = document.querySelector
   let payCash = document.createElement("button");
+  let payCard = document.createElement("button");
   checkoutButton.addEventListener("click", (e) => {
+    checkoutButton.classList.add("hidden");
     if (e.target.classList.contains("checkout")) {
       let paymentOption = document.createElement("div");
       paymentOption.classList.add("pay-option");
@@ -128,12 +127,19 @@ let displayCart = () => {
       //   let payCash = document.createElement("button");
       payCash.innerText = "Ca$h";
       payCash.classList.add("button");
-      let payCard = document.createElement("button");
+      //   let payCard = document.createElement("button");
       payCard.innerText = "Plastic";
       payCard.classList.add("button");
       paymentOption.append(payCard, payCash);
       receiptContainer.append(paymentOption);
     }
+    // let payCard = document.createElement("button");
+    let creditCardInfo = document.querySelector(".credit-card");
+
+    payCard.addEventListener("click", () => {
+      creditCardInfo.classList.toggle("hidden");
+    });
+
     let cashCheckOut = document.createElement("div");
     payCash.addEventListener("click", () => {
       cashCheckOut.classList.add("finish", "cash");
@@ -156,9 +162,14 @@ let displayCart = () => {
       let tender = document.getElementById("tender").value;
       let changeP = document.createElement("p");
       let finalTotal = subtotal * 0.06 + subtotal;
-      let change = parseFloat(tender) - finalTotal;
-      changeP.innerText = "Your change: " + change.toFixed(2);
+      let change = parseFloat(tender) - parseFloat(finalTotal);
+      if (change < 0) {
+        changeP.innerText = `Gimme mo' monay!`;
+      } else {
+        changeP.innerText = "Your change: " + change.toFixed(2);
+      }
       cashCheckOut.append(changeP);
+
       console.log(tender);
       changeButton.removeEventListener("click", onChangeButtonClick);
     };
