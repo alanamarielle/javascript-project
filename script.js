@@ -3,42 +3,45 @@ let inventory = [
   {
     name: "Mommy's Time Out",
     type: "Wine",
-    description: "A delightful merlot",
+    description:
+      "A delightful merlot for when your day is less than delightful",
     price: 15.99,
     quantity: 0,
   },
   {
     name: "Girls' Night",
     type: "Wine",
-    description: "A fruity pinot grigio",
+    description:
+      "A fruity pinot grigio for when grrls just wanna have fuh-uuun!",
     price: 15.99,
     quantity: 45,
   },
   {
     name: "Oh Hush, You're Making Me Blush",
     type: "Wine",
-    description: "A playful rosé",
+    description: "A playful rosé because it's noon somewhere",
     price: 20.99,
     quantity: 45,
   },
   {
     name: "Ale Mary",
     type: "Beer",
-    description: "A hearty ale",
+    description: "A hearty ale -- if you like that kind of thing",
     price: 8.99,
     quantity: 32,
   },
   {
     name: "Lager Than Life!",
     type: "Beer",
-    description: "A light, refreshing lager",
+    description:
+      "A light, refreshing lager for when you have to work through lunch",
     price: 8.99,
     quantity: 14,
   },
   {
     name: "Pucker Up, Butter Cup",
     type: "Beer",
-    description: "A fun and fruity sour beer",
+    description: "A fun and fruity sour beer, like sourpatch kids for adults",
     price: 12.99,
     quantity: 15,
   },
