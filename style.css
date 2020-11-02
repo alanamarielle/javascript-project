@@ -27,6 +27,9 @@ p {
 .hidden {
   display: none;
 }
+.invisible {
+  visibility: hidden;
+}
 .main {
   height: max-content;
   display: flex;
@@ -55,6 +58,11 @@ p {
   border-radius: 20px;
   height: 100px;
   width: 200px;
+}
+
+.credit-card {
+  height: 250px;
+  width: 250px;
 }
 
 .store {
