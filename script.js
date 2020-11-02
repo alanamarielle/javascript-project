@@ -2,61 +2,71 @@
 let inventory = [
   {
     name: "Mommy's Time Out",
-    type: "wine",
+    type: "Wine",
+    description: "A delightful merlot",
     price: 15.99,
     quantity: 0,
   },
   {
     name: "Girls' Night",
-    type: "wine",
+    type: "Wine",
+    description: "A fruity pinot grigio",
     price: 15.99,
     quantity: 45,
   },
   {
     name: "Oh Hush, You're Making Me Blush",
-    type: "wine",
+    type: "Wine",
+    description: "A playful rosé",
     price: 20.99,
     quantity: 45,
   },
   {
     name: "Ale Mary",
-    type: "beer",
+    type: "Beer",
+    description: "_________",
     price: 8.99,
     quantity: 32,
   },
   {
     name: "Lager Than Life!",
-    type: "beer",
+    type: "Beer",
+    description: "_________",
     price: 8.99,
     quantity: 14,
   },
   {
     name: "Pucker Up, Butter Cup",
-    type: "beer",
+    type: "Beer",
+    description: "_________",
     price: 12.99,
     quantity: 15,
   },
   {
     name: "You're Tequila Me, Dude!",
-    type: "liquor",
+    type: "Liquor",
+    description: "_________",
     price: 22.99,
     quantity: 4,
   },
   {
     name: "Russian Potato Salad",
-    type: "liquor",
+    type: "Liquor",
+    description: "A delightful red",
     price: 22.99,
     quantity: 6,
   },
   {
     name: "Coder Kris's Rare Cask",
-    type: "liquor",
+    type: "Liquor",
+    description: "_________",
     price: 27.99,
     quantity: 5,
   },
   {
     name: "Gin-derella's Glass Sipper",
-    type: "liquor",
+    type: "Liquor",
+    description: "_________",
     price: 27.99,
     quantity: 4,
   },
@@ -75,6 +85,12 @@ let display = () => {
     // itemInfo.innerText = (item.name, item.price);
     let name = document.createElement("p");
     name.innerText = item.name;
+    let type = document.createElement("p");
+    type.classList.add("type");
+    type.innerText = item.type;
+    let description = document.createElement("p");
+    description.classList.add("type");
+    description.innerText = item.description;
     let price = document.createElement("p");
     price.innerText = item.price;
     itemInfo.append(name, price);
@@ -82,7 +98,7 @@ let display = () => {
     addToCartButton.classList.add("add", "button");
     addToCartButton.innerText = "Add";
     addToCartButton.setAttribute("data-index", index);
-    card.append(name, price, addToCartButton);
+    card.append(name, type, description, price, addToCartButton);
     inventoryContainer.append(card);
   });
 };
@@ -191,15 +207,18 @@ let displayCart = () => {
       receiptContainer.append(cashCheckOut);
     });
     let changeButton = document.createElement("button");
+    changeButton.classList.add("button");
+    changeButton.innerText = `Get Change`;
     let onChangeButtonClick = () => {
       let tender = document.getElementById("tender").value;
       let changeP = document.createElement("p");
+
       let finalTotal = subtotal * 0.06 + subtotal;
       let change = parseFloat(tender) - parseFloat(finalTotal);
       if (change < 0) {
         changeP.innerText = `Gimme mo' monay!`;
       } else {
-        changeP.innerText = "Your change: " + change.toFixed(2);
+        changeP.innerText = "Your change is " + change.toFixed(2);
       }
       cashCheckOut.append(changeP);
 
