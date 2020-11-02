@@ -24,50 +24,53 @@ let inventory = [
   {
     name: "Ale Mary",
     type: "Beer",
-    description: "_________",
+    description: "A hearty ale",
     price: 8.99,
     quantity: 32,
   },
   {
     name: "Lager Than Life!",
     type: "Beer",
-    description: "_________",
+    description: "A light, refreshing lager",
     price: 8.99,
     quantity: 14,
   },
   {
     name: "Pucker Up, Butter Cup",
     type: "Beer",
-    description: "_________",
+    description: "A fun and fruity sour beer",
     price: 12.99,
     quantity: 15,
   },
   {
     name: "You're Tequila Me, Dude!",
     type: "Liquor",
-
-    description: "_________",
+    description:
+      "Each sip is a little vacation -- dig your toes in the sand and grab the salt!",
     price: 22.99,
     quantity: 4,
   },
   {
     name: "Russian Potato Salad",
     type: "Liquor",
-    description: "A delightful red",
+    description:
+      "Vodka warms you up, calms you down, gives you courage -- most versatile liquor around",
     price: 22.99,
     quantity: 6,
   },
   {
     name: "Coder Kris's Rare Cask",
     type: "Liquor",
-    description: "_________",
+    description:
+      "Your favorite cigar and rainy day will pair nicely with this whiskey",
     price: 27.99,
     quantity: 5,
   },
   {
     name: "Gin-derella's Glass Sipper",
     type: "Liquor",
-    description: "_________",
+    description:
+      "Add some tonic or make it dirty with a gin martini and you'll feel like a princess until midnight",
     price: 27.99,
     quantity: 4,
   },
@@ -162,6 +165,7 @@ let displayCart = () => {
       creditCardInfo.classList.toggle("hidden");
       let form = document.querySelector(".form");
       form.addEventListener("submit", (e) => {
+        creditCardInfo.classList.toggle("hidden");
         e.preventDefault();
         let capture = new FormData(form);
         let customerName = capture.get("name");
@@ -174,18 +178,19 @@ let displayCart = () => {
         let index = e.target.getAttribute("data-index");
 
         cartArray.forEach((item) => {
-          let card = document.createElement("div");
-          card.classList.add("item-info");
+          // let card = document.createElement("div");
+          // card.classList.add("item-info");
           let name = document.createElement("p");
           name.innerText = item.name;
           let price = document.createElement("p");
           price.innerText = item.price;
-          card.append(name, price);
-          creditCardReceipt.innerText = customerName;
+          // card.append(name, price);
+          let creditCardReceipt = document.createElement("p");
+          creditCardReceipt.innerText = `Thanks for shopping at Not Your Mama's Cocktail Cart , ${customerName}`;
           let finalTotal = (subtotal * 0.06 + subtotal).toFixed(2);
-          creditCardReceipt.append(finalTotal);
-
-          receiptContainer.append(card, creditCardReceipt);
+          // receipt.append(finalTotal);
+          creditCardReceipt.append(name, price, finalTotal);
+          receiptContainer.append(creditCardReceipt);
         });
         console.log(creditCardReceipt);
       });
@@ -193,7 +198,7 @@ let displayCart = () => {
 
     let cashCheckOut = document.createElement("div");
     payCash.addEventListener("click", () => {
-      cashCheckOut.classList.add("finish", "cash");
+      cashCheckOut.classList.add("pay-option");
       let subP = document.createElement("p");
       subP.innerText = `Subtotal : $${subtotal}`;
       let taxP = document.createElement("p");
@@ -226,22 +231,17 @@ let displayCart = () => {
       cashReceipt.classList.add("pay-option");
 
       cartArray.forEach((item) => {
-        let card = document.createElement("div");
-        card.classList.add("item-info");
         let name = document.createElement("p");
         name.innerText = item.name;
         let price = document.createElement("p");
         price.innerText = item.price;
-        card.append(name, price);
-
-        cashReceipt.append(finalTotal.toFixed(2));
-
-        receiptContainer.append(card);
+        cashReceipt.append(name, price);
       });
 
       let receiptText = document.createElement("p");
       receiptText.innerText = `Thanks for shopping at Not Your Mama's Cocktail Cart `;
-      cashCheckOut.append(changeP, receiptText, cashReceipt);
+      receiptContainer.append(receiptText, cashReceipt, finalTotal.toFixed(2));
+      // cashCheckOut.append(changeP, receiptText, cashReceipt);
 
       console.log(tender);
       changeButton.removeEventListener("click", onChangeButtonClick);
