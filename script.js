@@ -61,8 +61,10 @@ let inventory = [
     quantity: 4,
   },
 ];
+
 let inventoryContainer = document.querySelector(".store");
 console.log(inventory);
+
 let display = () => {
   inventory.forEach((item, index) => {
     let card = document.createElement("div");
@@ -84,11 +86,13 @@ let display = () => {
     inventoryContainer.append(card);
   });
 };
+
 display();
 let receiptContainer = document.querySelector(".receipt-container");
 let store = document.querySelector(".store");
 let cartArray = [];
 let subtotalContainer = document.querySelector(".sub-total");
+
 let displayCart = () => {
   receiptContainer.innerHTML = "";
   receiptContainer.innerText = "Your Cart";
@@ -108,6 +112,7 @@ let displayCart = () => {
     receiptContainer.append(card);
     subtotal += item.price;
   });
+
   let subTotal = document.createElement("p");
   subTotal.innerText = `This is your subtotal: $${subtotal.toFixed(2)}`;
   let checkoutButton = document.createElement("button");
@@ -148,7 +153,23 @@ let displayCart = () => {
 
         let creditCardReceipt = document.createElement("div");
         creditCardReceipt.classList.add("receipt");
-        creditCardReceipt.innerText = customerName;
+
+        let index = e.target.getAttribute("data-index");
+
+        //want to pull cartArray info to receiptItems div and append to creditCardReceipt
+        cartArray.forEach((item) => {
+          let card = document.createElement("div");
+          card.classList.add("item-info");
+          let name = document.createElement("p");
+          name.innerText = item.name;
+          let price = document.createElement("p");
+          price.innerText = item.price;
+          card.append(name, price);
+          creditCardReceipt.innerText = customerName;
+          creditCardReceipt.append(index);
+          // itemInfo.append(name, price);
+          receiptContainer.append(card, creditCardReceipt);
+        });
       });
     });
 
@@ -190,6 +211,7 @@ let displayCart = () => {
   });
 };
 console.log(receiptContainer);
+
 store.addEventListener("click", (e) => {
   if (e.target.classList.contains("add")) {
     let index = e.target.getAttribute("data-index");
@@ -199,6 +221,7 @@ store.addEventListener("click", (e) => {
     displayCart();
   }
 });
+
 receiptContainer.addEventListener("click", (e) => {
   if (e.target.classList.contains("delete")) {
     let index = e.target.getAttribute("data-index");
