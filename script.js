@@ -45,6 +45,7 @@ let inventory = [
   {
     name: "You're Tequila Me, Dude!",
     type: "Liquor",
+
     description: "_________",
     price: 22.99,
     quantity: 4,
@@ -111,7 +112,7 @@ let subtotalContainer = document.querySelector(".sub-total");
 
 let displayCart = () => {
   receiptContainer.innerHTML = "";
-  receiptContainer.innerText = "Your Cart";
+  receiptContainer.innerHTML = "<h3>Your Cart</h3>";
   let subtotal = 0;
   cartArray.forEach((item, index) => {
     let card = document.createElement("div");
