@@ -83,6 +83,7 @@ p {
   flex-direction: column;
   justify-content: space-evenly;
   background-color: white;
+  color: #4a1a2c;
   align-items: center;
   text-align: center;
   padding: 10px;
@@ -131,10 +132,19 @@ p {
 .recipes {
   color: #84815b;
   background-color: beige;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
   text-align: center;
+  align-items: center;
+}
+.image-container {
+  height: 200px;
+  width: 200px;
 }
 .footer {
   height: 100px;
+  width: 100%;
   padding-bottom: 50px;
   color: white;
   background-color: black;
@@ -161,5 +171,9 @@ p {
   }
   .recipes {
     flex: 1;
+  }
+  .image-container {
+    height: 400px;
+    width: 400px;
   }
 }
