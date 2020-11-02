@@ -81,9 +81,9 @@ let display = () => {
     let card = document.createElement("div");
     card.classList.add("item");
     let itemInfo = document.createElement("div");
-    // document.card.appendChild(itemInfo);
+
     itemInfo.classList.add("item-info");
-    // itemInfo.innerText = (item.name, item.price);
+
     let name = document.createElement("p");
     name.innerText = item.name;
     let type = document.createElement("p");
@@ -137,7 +137,7 @@ let displayCart = () => {
   checkoutButton.classList.add("checkout", "button");
   receiptContainer.append(subTotal, checkoutButton);
   console.log(subtotal);
-  // let checkout = document.querySelector
+
   let payCash = document.createElement("button");
   let payCard = document.createElement("button");
   checkoutButton.addEventListener("click", (e) => {
@@ -146,16 +146,16 @@ let displayCart = () => {
       let paymentOption = document.createElement("div");
       paymentOption.classList.add("pay-option");
       paymentOption.innerText = "How would you like to pay?";
-      //   let payCash = document.createElement("button");
+
       payCash.innerText = "Ca$h";
       payCash.classList.add("button");
-      //   let payCard = document.createElement("button");
+
       payCard.innerText = "Plastic";
       payCard.classList.add("button");
       paymentOption.append(payCard, payCash);
       receiptContainer.append(paymentOption);
     }
-    // let payCard = document.createElement("button");
+
     let creditCardInfo = document.querySelector(".credit-card");
 
     payCard.addEventListener("click", () => {
@@ -169,11 +169,10 @@ let displayCart = () => {
         let cvv = capture.get("cvv");
 
         let creditCardReceipt = document.createElement("div");
-        creditCardReceipt.classList.add("receipt");
+        creditCardReceipt.classList.add("pay-option");
 
         let index = e.target.getAttribute("data-index");
 
-        //want to pull cartArray info to receiptItems div and append to creditCardReceipt
         cartArray.forEach((item) => {
           let card = document.createElement("div");
           card.classList.add("item-info");
@@ -183,10 +182,12 @@ let displayCart = () => {
           price.innerText = item.price;
           card.append(name, price);
           creditCardReceipt.innerText = customerName;
-          creditCardReceipt.append(index);
-          // itemInfo.append(name, price);
+          let finalTotal = (subtotal * 0.06 + subtotal).toFixed(2);
+          creditCardReceipt.append(finalTotal);
+
           receiptContainer.append(card, creditCardReceipt);
         });
+        console.log(creditCardReceipt);
       });
     });
 
@@ -221,12 +222,31 @@ let displayCart = () => {
       } else {
         changeP.innerText = "Your change is " + change.toFixed(2);
       }
-      cashCheckOut.append(changeP);
+      let cashReceipt = document.createElement("div");
+      cashReceipt.classList.add("pay-option");
+
+      cartArray.forEach((item) => {
+        let card = document.createElement("div");
+        card.classList.add("item-info");
+        let name = document.createElement("p");
+        name.innerText = item.name;
+        let price = document.createElement("p");
+        price.innerText = item.price;
+        card.append(name, price);
+
+        cashReceipt.append(finalTotal.toFixed(2));
+
+        receiptContainer.append(card);
+      });
+
+      let receiptText = document.createElement("p");
+      receiptText.innerText = `Thanks for shopping at Not Your Mama's Cocktail Cart `;
+      cashCheckOut.append(changeP, receiptText, cashReceipt);
 
       console.log(tender);
       changeButton.removeEventListener("click", onChangeButtonClick);
     };
-    // changeButton.setAttribute("type", "submit");
+
     changeButton.addEventListener("click", onChangeButtonClick);
   });
 };
